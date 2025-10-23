@@ -1,4 +1,4 @@
-import 'package:wisata_candi_mfrendi_riyannanda/models/candi.dart';
+ kimport 'package:wisata_candi_mfrendi_riyannanda/models/candi.dart';
 
 var candiList = [
   Candi(
