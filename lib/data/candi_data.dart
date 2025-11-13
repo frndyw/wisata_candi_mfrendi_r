@@ -162,3 +162,4 @@ var candiList = [
     isFavorite: false,
   ),
 ];
+ 
