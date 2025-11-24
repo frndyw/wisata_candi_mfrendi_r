@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wisata_candi/widgets/profile_file_item.dart';
+import 'package:wisata_candi/widgets/profile_into_item.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -9,17 +9,22 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  //   TODO 1 : Deklarasi variabel yang dibutuhkan
+//   TODO 1 : Deklarasi variabel yang dibutuhkan
   bool isSignedIn = false;
   String fullName = '';
   String userName = '';
   int favoriteCandiCount = 0;
+  late Color iconColor;
 
   // TODO 5. Implementasi fungsi signIn
   void signIn() {
-    setState(() {
-      isSignedIn = !isSignedIn;
-    });
+    // setState(() {
+    //   isSignedIn = true;
+    //   userName = 'Faiz';
+    //   fullName = 'Faiz Ganteng';
+    //   favoriteCandiCount = 3;
+    // });
+    Navigator.pushNamed(context, '/signin');
   }
 
   // TODO 6. Implementasi fungsi signOut
@@ -35,15 +40,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Stack(
         children: [
           Container(
-            height: 200,
-            width: double.infinity,
-            color: Colors.deepPurple,
+            height: 200, width: double.infinity, color: Colors.deepPurple,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                //   TODO 2 : Buat bagian ProfileHeader yang berisi gambar profile
+              //   TODO 2 : Buat bagian ProfileHeader yang berisi gambar profile
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
@@ -53,25 +56,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.deepPurple,
-                              width: 2,
-                            ),
+                            border: Border.all(color: Colors.deepPurple, width: 2),
                             shape: BoxShape.circle,
                           ),
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: AssetImage(
-                              'assets/placeholder_image.png',
-                            ),
+                            backgroundImage: AssetImage('assets/placeholder_image.png'),
                           ),
                         ),
-                        if (isSignedIn)
+                        if(isSignedIn)
                           IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.camera_alt,
-                              color: Colors.deepPurple[50],
+                            onPressed: (){},
+                            icon: Icon(Icons.camera_alt,
+                            color: Colors.deepPurple[50],
                             ),
                           ),
                       ],
@@ -112,13 +109,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   value: favoriteCandiCount > 0 ? '$favoriteCandiCount' : '',
                   iconColor: Colors.red,
                 ),
-                //   TODO 4 : Buat bagian ProfileActions yang berisi TextButton sign in/out
+              //   TODO 4 : Buat bagian ProfileActions yang berisi TextButton sign in/out
                 SizedBox(height: 4),
                 Divider(color: Colors.deepPurple[100]),
                 SizedBox(height: 4),
-                isSignedIn
-                    ? TextButton(onPressed: signOut, child: Text('Sign Out'))
-                    : TextButton(onPressed: signIn, child: Text('Sign In')),
+                isSignedIn ? TextButton(
+                  onPressed: signOut,
+                  child: Text('Sign Out'))
+                    : TextButton(
+                    onPressed: signIn,
+                    child: Text('Sign In')
+                ),
               ],
             ),
           ),

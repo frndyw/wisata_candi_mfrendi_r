@@ -19,9 +19,9 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //   TODO: 2. Buat appbar dengan judul pencarian candi
+    //   TODO: 2. Buat appbar dengan judul pencarian candi
       appBar: AppBar(title: Text('Pencarian Candi'),),
-      //   TODO: 3. Buat body berupa column
+    //   TODO: 3. Buat body berupa column
       body: Column(
         children: [
           //   TODO: 4. Buat TextField pencarian sebagai anak dari column
@@ -43,13 +43,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 decoration: InputDecoration(
                   hintText: 'Cari candi...',
                   prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.deepPurple
+                    Icons.search,
+                    color: Colors.deepPurple
                   ),
                   // TODO 7. Implementasi pengosongan input
                   border: InputBorder.none,
                   contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
               ),
             ),
@@ -57,54 +57,54 @@ class _SearchScreenState extends State<SearchScreen> {
           //   TODO: 5. Buat ListView hasil pencarian sebagai anak dari Column
           Expanded(
             child: ListView.builder(
-                itemCount: _filteredCandis.length,
-                itemBuilder: (context, index) {
-                  final candi = _filteredCandis[index];
-                  // TODO: 8. Implementasi GestureDetector dan Hero animation
-                  return Card(
-                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(8),
-                          width: 100,
-                          height: 100,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              candi.imageAsset,
-                              fit: BoxFit.cover,
+              itemCount: _filteredCandis.length,
+              itemBuilder: (context, index) {
+                final candi = _filteredCandis[index];
+                // TODO: 8. Implementasi GestureDetector dan Hero animation
+                return Card(
+                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: 100,
+                        height: 100,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            candi.imageAsset,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              candi.name,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                candi.name,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            SizedBox(height: 4),
+                            Text(
+                              candi.location,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
-                              SizedBox(height: 4),
-                              Text(
-                                candi.location,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                }
+                      ),
+                    ],
+                  ),
+                );
+              }
             ),
           ),
         ],
